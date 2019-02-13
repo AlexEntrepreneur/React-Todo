@@ -8,8 +8,10 @@ class App extends React.Component {
   constructor() {
     super()
 
+    this.storedTodos = JSON.parse(localStorage.getItem('ReactTodo'));
+    
     this.state = {
-      todos: [{ task: 'test task', id: '12314345', completed: false }, { task: 'test task 3428976', id: '765714345', completed: true }]
+      todos: this.storedTodos
     }
 
   }
@@ -18,6 +20,11 @@ class App extends React.Component {
     this.setState(currentState => {
       return ({ todos: currentState.todos.concat(taskData)});
     });
+  }
+
+  componentDidUpdate() {
+    const todosString = JSON.stringify(this.state.todos);
+    localStorage.setItem('ReactTodo', todosString);
   }
 
   render () {

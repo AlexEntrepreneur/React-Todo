@@ -33,6 +33,7 @@ class TodoForm extends React.Component {
     // To listen for enter key being pressed
     this.taskInputBox.current.addEventListener('keydown', this.handleKeydownEvent);
   }
+
   componentWillUnmount() {
     this.taskInputBox.current.removeEventListener('keydown', this.handleKeydownEvent);
   }
