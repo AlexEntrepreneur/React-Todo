@@ -1,11 +1,7 @@
 import React from 'react';
 
 class TodoList extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
-  onCheckboxChange = (elementId, event) => {
+onCheckboxChange = (elementId, event) => {
     this.props.toggleTodoComplete(elementId, event); // Send state back up to App component
   }
 

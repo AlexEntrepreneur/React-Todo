@@ -1,4 +1,5 @@
 import React from 'react';
+import './App.css';
 import TodosContainer from './components/TodoComponents/TodosContainer.js';
 
 class App extends React.Component {

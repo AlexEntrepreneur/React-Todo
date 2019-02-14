@@ -1,4 +1,5 @@
 import React from 'react';
+import './TodoForm.css';
 
 const initialInputState = { task: '', id: '', completed: false };
 
@@ -50,10 +51,17 @@ class TodoForm extends React.Component {
 
   render() {
     return (
-      <div className="task-box-container">
+      <div className="task-box-container full-width">
         <div className="task-box">
-          <input onChange={this.onTaskInputChange} ref={this.taskInputBox} value={this.state.task} className="task-input-box" type="text"></input>
           <p className="task-box-tip">Press Enter To Submit A Task</p>
+          <input
+            onChange={this.onTaskInputChange}
+            ref={this.taskInputBox}
+            value={this.state.task}
+            className="task-input-box full-width"
+            placeholder="Enter A To-do"
+            type="text">
+          </input>
         </div>
         <button onClick={this.onClearButtonClick}>Clear Complete Todos</button>
       </div>
