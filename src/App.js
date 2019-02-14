@@ -37,6 +37,14 @@ class App extends React.Component {
     });
   }
 
+  clearCompletedTodos = (taskData) => {
+    const completedTodosCleared = this.state.todos.filter(todo => {
+      return todo.completed === false;
+    });
+
+    this.setState({ todos: completedTodosCleared });
+  }
+
   componentDidUpdate() {
     const todosString = JSON.stringify(this.state.todos);
     localStorage.setItem('ReactTodo', todosString);
@@ -48,6 +56,7 @@ class App extends React.Component {
         todosData={this.state.todos}
         addTodoFunction={this.addTodo}
         toggleTodoCompleteFunction={this.toggleTodoComplete}
+        clearCompletedTodosFunction={this.clearCompletedTodos}
       />
     );
   }

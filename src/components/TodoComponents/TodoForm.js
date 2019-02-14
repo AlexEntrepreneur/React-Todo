@@ -8,12 +8,17 @@ class TodoForm extends React.Component {
     this.state = initialInputState;
     this.taskInputBox = React.createRef();
     this.submitTodo = props.addTodoFunction;
+    this.clearCompletedTodos = props.clearCompletedTodosFunction;
   }
 
   onTaskInputChange = (changeEvent) => {
     this.setState({
       task: changeEvent.target.value,
     });
+  }
+
+  onClearButtonClick = () => {
+    this.clearCompletedTodos()
   }
 
   submitTask = () => {
@@ -46,8 +51,11 @@ class TodoForm extends React.Component {
   render() {
     return (
       <div className="task-box-container">
-        <input onChange={this.onTaskInputChange} ref={this.taskInputBox} value={this.state.task} className="task-input-box" type="text"></input>
-        <p className="task-box-tip">Press Enter To Submit A Task</p>
+        <div className="task-box">
+          <input onChange={this.onTaskInputChange} ref={this.taskInputBox} value={this.state.task} className="task-input-box" type="text"></input>
+          <p className="task-box-tip">Press Enter To Submit A Task</p>
+        </div>
+        <button onClick={this.onClearButtonClick}>Clear Complete Todos</button>
       </div>
     );
   }
