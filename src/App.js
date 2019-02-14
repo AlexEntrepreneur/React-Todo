@@ -1,5 +1,5 @@
 import React from 'react';
-import TodosContainer from './components/TodoComponents/Todo.js';
+import TodosContainer from './components/TodoComponents/TodosContainer.js';
 
 class App extends React.Component {
   // you will need a place to store your state in this component.
@@ -9,9 +9,9 @@ class App extends React.Component {
     super()
 
     this.storedTodos = JSON.parse(localStorage.getItem('ReactTodo'));
-    
+
     this.state = {
-      todos: this.storedTodos
+      todos: this.storedTodos || []
     }
 
   }
@@ -22,6 +22,21 @@ class App extends React.Component {
     });
   }
 
+  toggleTodoComplete = (elementId, event) => {
+    event.persist(); // Remove React Warning (Synthetic Events)
+    const completedStateToggled = this.state.todos.map(todo => {
+      if (todo.id === elementId) {
+          todo.completed = event.target.checked;
+          return todo;
+        }
+        return todo;
+    })
+
+    this.setState({
+      todos: completedStateToggled
+    });
+  }
+
   componentDidUpdate() {
     const todosString = JSON.stringify(this.state.todos);
     localStorage.setItem('ReactTodo', todosString);
@@ -29,7 +44,11 @@ class App extends React.Component {
 
   render () {
     return (
-      <TodosContainer todosData={this.state.todos} addTodoFunction={this.addTodo} />
+      <TodosContainer
+        todosData={this.state.todos}
+        addTodoFunction={this.addTodo}
+        toggleTodoCompleteFunction={this.toggleTodoComplete}
+      />
     );
   }
 }

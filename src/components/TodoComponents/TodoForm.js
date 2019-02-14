@@ -1,6 +1,5 @@
 import React from 'react';
 
-
 const initialInputState = { task: '', id: '', completed: false };
 
 class TodoForm extends React.Component {
@@ -20,7 +19,7 @@ class TodoForm extends React.Component {
   submitTask = () => {
     if (this.state.task.length) {
       this.setState({ id: Date.now() });
-      this.submitTodo(this.state)
+      this.submitTodo(this.state);
       this.clearInput()
     }
   }
