@@ -1,0 +1,26 @@
+.task-box-container {
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 96rem;
+  padding: 4rem 2rem;
+}
+
+
+.task-box-container button {
+  align-self: flex-end;
+}
+
+.task-box {
+  width: 70%;
+  margin-right: 3rem;
+}
+
+.task-box-tip {
+  font-size: 1.2rem;
+  opacity: 0.8;
+}
